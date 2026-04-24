@@ -1,0 +1,10 @@
+========== Parser Comparison ==========
+
+Metric                        SLR(1)         LR(1)          
+------------------------------------------------------------
+Number of states              12             22             
+Build time (ms)               0.00           2.07           
+Has conflicts                 No             No             
+
+Conclusion:
+  Both parsers handle this grammar. SLR(1) uses fewer states.

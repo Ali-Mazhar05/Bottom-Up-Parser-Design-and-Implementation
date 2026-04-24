@@ -1,0 +1,3 @@
+# Grammar 4: Dangling else (ambiguous - has shift/reduce conflict in both parsers)
+Stmt -> if Expr then Stmt | if Expr then Stmt else Stmt | other
+Expr -> id

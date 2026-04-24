@@ -1,0 +1,5 @@
+# Grammar 3: Classic SLR(1) conflict example
+# This grammar IS LR(1) but NOT SLR(1)
+Start -> Lval = Rval | Rval
+Lval -> * Rval | id
+Rval -> Lval

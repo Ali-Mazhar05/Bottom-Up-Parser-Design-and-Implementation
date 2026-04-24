@@ -1,0 +1,11 @@
+# Invalid input strings (one per line)
+id + + id
+* id
+( id
+id id
++
+id +
+) id (
+id * * id
+( )
++ id +

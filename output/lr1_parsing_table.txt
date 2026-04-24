@@ -1,0 +1,32 @@
+
+========== LR(1) Parsing Table ==========
+
+=========================================================================================================================================
+  State |              (             )             *             +            id             $ |           Expr        Factor          Term
+-----------------------------------------------------------------------------------------------------------------------------------------
+     I0 |             s1                                                      s5               |              2             3             4
+     I1 |             s6                                                     s10               |              7             8             9
+     I2 |                                                      s11                         acc |                                           
+     I3 |                             r(Term->Factor)r(Term->Factor)              r(Term->Factor) |                                           
+     I4 |                                        s12 r(Expr->Term)               r(Expr->Term) |                                           
+     I5 |                              r(Factor->id) r(Factor->id)               r(Factor->id) |                                           
+     I6 |             s6                                                     s10               |             13             8             9
+     I7 |                          s14                         s15                             |                                           
+     I8 |               r(Term->Factor)r(Term->Factor)r(Term->Factor)                             |                                           
+     I9 |                r(Expr->Term)           s16 r(Expr->Term)                             |                                           
+    I10 |                r(Factor->id) r(Factor->id) r(Factor->id)                             |                                           
+    I11 |             s1                                                      s5               |                            3            17
+    I12 |             s1                                                      s5               |                           18              
+    I13 |                          s19                         s15                             |                                           
+    I14 |                             r(Factor->( Expr ))r(Factor->( Expr ))              r(Factor->( Expr )) |                                           
+    I15 |             s6                                                     s10               |                            8            20
+    I16 |             s6                                                     s10               |                           21              
+    I17 |                                        s12r(Expr->Expr + Term)              r(Expr->Expr + Term) |                                           
+    I18 |                             r(Term->Term * Factor)r(Term->Term * Factor)              r(Term->Term * Factor) |                                           
+    I19 |               r(Factor->( Expr ))r(Factor->( Expr ))r(Factor->( Expr ))                             |                                           
+    I20 |               r(Expr->Expr + Term)           s16r(Expr->Expr + Term)                             |                                           
+    I21 |               r(Term->Term * Factor)r(Term->Term * Factor)r(Term->Term * Factor)                             |                                           
+=========================================================================================================================================
+No conflicts found. Grammar is valid.
+
+[OK] Grammar is LR(1).

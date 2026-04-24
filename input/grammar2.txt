@@ -1,0 +1,4 @@
+# Grammar 2: Expression with addition and multiplication
+Expr -> Expr + Term | Term
+Term -> Term * Factor | Factor
+Factor -> ( Expr ) | id

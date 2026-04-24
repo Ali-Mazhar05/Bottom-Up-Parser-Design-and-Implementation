@@ -1,0 +1,206 @@
+
+========== LR(1) Canonical Collection ==========
+Total states: 22
+
+I0:
+  [ExprPrime -> • Expr , $]
+  [Expr -> • Expr + Term , $]
+  [Expr -> • Expr + Term , +]
+  [Expr -> • Term , $]
+  [Expr -> • Term , +]
+  [Term -> • Term * Factor , $]
+  [Term -> • Term * Factor , *]
+  [Term -> • Term * Factor , +]
+  [Term -> • Factor , $]
+  [Term -> • Factor , *]
+  [Term -> • Factor , +]
+  [Factor -> • ( Expr ) , $]
+  [Factor -> • ( Expr ) , *]
+  [Factor -> • ( Expr ) , +]
+  [Factor -> • id , $]
+  [Factor -> • id , *]
+  [Factor -> • id , +]
+
+I1:
+  [Expr -> • Expr + Term , )]
+  [Expr -> • Expr + Term , +]
+  [Expr -> • Term , )]
+  [Expr -> • Term , +]
+  [Term -> • Term * Factor , )]
+  [Term -> • Term * Factor , *]
+  [Term -> • Term * Factor , +]
+  [Term -> • Factor , )]
+  [Term -> • Factor , *]
+  [Term -> • Factor , +]
+  [Factor -> • ( Expr ) , )]
+  [Factor -> • ( Expr ) , *]
+  [Factor -> • ( Expr ) , +]
+  [Factor -> ( • Expr ) , $]
+  [Factor -> ( • Expr ) , *]
+  [Factor -> ( • Expr ) , +]
+  [Factor -> • id , )]
+  [Factor -> • id , *]
+  [Factor -> • id , +]
+
+I2:
+  [ExprPrime -> Expr • , $]
+  [Expr -> Expr • + Term , $]
+  [Expr -> Expr • + Term , +]
+
+I3:
+  [Term -> Factor • , $]
+  [Term -> Factor • , *]
+  [Term -> Factor • , +]
+
+I4:
+  [Expr -> Term • , $]
+  [Expr -> Term • , +]
+  [Term -> Term • * Factor , $]
+  [Term -> Term • * Factor , *]
+  [Term -> Term • * Factor , +]
+
+I5:
+  [Factor -> id • , $]
+  [Factor -> id • , *]
+  [Factor -> id • , +]
+
+I6:
+  [Expr -> • Expr + Term , )]
+  [Expr -> • Expr + Term , +]
+  [Expr -> • Term , )]
+  [Expr -> • Term , +]
+  [Term -> • Term * Factor , )]
+  [Term -> • Term * Factor , *]
+  [Term -> • Term * Factor , +]
+  [Term -> • Factor , )]
+  [Term -> • Factor , *]
+  [Term -> • Factor , +]
+  [Factor -> • ( Expr ) , )]
+  [Factor -> • ( Expr ) , *]
+  [Factor -> • ( Expr ) , +]
+  [Factor -> ( • Expr ) , )]
+  [Factor -> ( • Expr ) , *]
+  [Factor -> ( • Expr ) , +]
+  [Factor -> • id , )]
+  [Factor -> • id , *]
+  [Factor -> • id , +]
+
+I7:
+  [Expr -> Expr • + Term , )]
+  [Expr -> Expr • + Term , +]
+  [Factor -> ( Expr • ) , $]
+  [Factor -> ( Expr • ) , *]
+  [Factor -> ( Expr • ) , +]
+
+I8:
+  [Term -> Factor • , )]
+  [Term -> Factor • , *]
+  [Term -> Factor • , +]
+
+I9:
+  [Expr -> Term • , )]
+  [Expr -> Term • , +]
+  [Term -> Term • * Factor , )]
+  [Term -> Term • * Factor , *]
+  [Term -> Term • * Factor , +]
+
+I10:
+  [Factor -> id • , )]
+  [Factor -> id • , *]
+  [Factor -> id • , +]
+
+I11:
+  [Expr -> Expr + • Term , $]
+  [Expr -> Expr + • Term , +]
+  [Term -> • Term * Factor , $]
+  [Term -> • Term * Factor , *]
+  [Term -> • Term * Factor , +]
+  [Term -> • Factor , $]
+  [Term -> • Factor , *]
+  [Term -> • Factor , +]
+  [Factor -> • ( Expr ) , $]
+  [Factor -> • ( Expr ) , *]
+  [Factor -> • ( Expr ) , +]
+  [Factor -> • id , $]
+  [Factor -> • id , *]
+  [Factor -> • id , +]
+
+I12:
+  [Term -> Term * • Factor , $]
+  [Term -> Term * • Factor , *]
+  [Term -> Term * • Factor , +]
+  [Factor -> • ( Expr ) , $]
+  [Factor -> • ( Expr ) , *]
+  [Factor -> • ( Expr ) , +]
+  [Factor -> • id , $]
+  [Factor -> • id , *]
+  [Factor -> • id , +]
+
+I13:
+  [Expr -> Expr • + Term , )]
+  [Expr -> Expr • + Term , +]
+  [Factor -> ( Expr • ) , )]
+  [Factor -> ( Expr • ) , *]
+  [Factor -> ( Expr • ) , +]
+
+I14:
+  [Factor -> ( Expr ) • , $]
+  [Factor -> ( Expr ) • , *]
+  [Factor -> ( Expr ) • , +]
+
+I15:
+  [Expr -> Expr + • Term , )]
+  [Expr -> Expr + • Term , +]
+  [Term -> • Term * Factor , )]
+  [Term -> • Term * Factor , *]
+  [Term -> • Term * Factor , +]
+  [Term -> • Factor , )]
+  [Term -> • Factor , *]
+  [Term -> • Factor , +]
+  [Factor -> • ( Expr ) , )]
+  [Factor -> • ( Expr ) , *]
+  [Factor -> • ( Expr ) , +]
+  [Factor -> • id , )]
+  [Factor -> • id , *]
+  [Factor -> • id , +]
+
+I16:
+  [Term -> Term * • Factor , )]
+  [Term -> Term * • Factor , *]
+  [Term -> Term * • Factor , +]
+  [Factor -> • ( Expr ) , )]
+  [Factor -> • ( Expr ) , *]
+  [Factor -> • ( Expr ) , +]
+  [Factor -> • id , )]
+  [Factor -> • id , *]
+  [Factor -> • id , +]
+
+I17:
+  [Expr -> Expr + Term • , $]
+  [Expr -> Expr + Term • , +]
+  [Term -> Term • * Factor , $]
+  [Term -> Term • * Factor , *]
+  [Term -> Term • * Factor , +]
+
+I18:
+  [Term -> Term * Factor • , $]
+  [Term -> Term * Factor • , *]
+  [Term -> Term * Factor • , +]
+
+I19:
+  [Factor -> ( Expr ) • , )]
+  [Factor -> ( Expr ) • , *]
+  [Factor -> ( Expr ) • , +]
+
+I20:
+  [Expr -> Expr + Term • , )]
+  [Expr -> Expr + Term • , +]
+  [Term -> Term • * Factor , )]
+  [Term -> Term • * Factor , *]
+  [Term -> Term • * Factor , +]
+
+I21:
+  [Term -> Term * Factor • , )]
+  [Term -> Term * Factor • , *]
+  [Term -> Term * Factor • , +]
+
