@@ -1,62 +1,46 @@
 
 ========== LR(0) Canonical Collection ==========
-Total states: 12
+Total states: 10
 
 I0:
-  ExprPrime -> • Expr 
-  Expr -> • Expr + Term 
-  Expr -> • Term 
-  Term -> • Term * Factor 
-  Term -> • Factor 
-  Factor -> • ( Expr ) 
-  Factor -> • id 
+  StartPrime -> • Start 
+  Start -> • Lval = Rval 
+  Start -> • Rval 
+  Lval -> • * Rval 
+  Lval -> • id 
+  Rval -> • Lval 
 
 I1:
-  Expr -> • Expr + Term 
-  Expr -> • Term 
-  Term -> • Term * Factor 
-  Term -> • Factor 
-  Factor -> • ( Expr ) 
-  Factor -> ( • Expr ) 
-  Factor -> • id 
+  Lval -> • * Rval 
+  Lval -> * • Rval 
+  Lval -> • id 
+  Rval -> • Lval 
 
 I2:
-  ExprPrime -> Expr • 
-  Expr -> Expr • + Term 
+  Start -> Lval • = Rval 
+  Rval -> Lval • 
 
 I3:
-  Term -> Factor • 
+  Start -> Rval • 
 
 I4:
-  Expr -> Term • 
-  Term -> Term • * Factor 
+  StartPrime -> Start • 
 
 I5:
-  Factor -> id • 
+  Lval -> id • 
 
 I6:
-  Expr -> Expr • + Term 
-  Factor -> ( Expr • ) 
+  Rval -> Lval • 
 
 I7:
-  Expr -> Expr + • Term 
-  Term -> • Term * Factor 
-  Term -> • Factor 
-  Factor -> • ( Expr ) 
-  Factor -> • id 
+  Lval -> * Rval • 
 
 I8:
-  Term -> Term * • Factor 
-  Factor -> • ( Expr ) 
-  Factor -> • id 
+  Start -> Lval = • Rval 
+  Lval -> • * Rval 
+  Lval -> • id 
+  Rval -> • Lval 
 
 I9:
-  Factor -> ( Expr ) • 
-
-I10:
-  Expr -> Expr + Term • 
-  Term -> Term • * Factor 
-
-I11:
-  Term -> Term * Factor • 
+  Start -> Lval = Rval • 
 

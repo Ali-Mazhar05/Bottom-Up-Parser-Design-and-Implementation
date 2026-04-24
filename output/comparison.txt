@@ -2,9 +2,10 @@
 
 Metric                        SLR(1)         LR(1)          
 ------------------------------------------------------------
-Number of states              12             22             
-Build time (ms)               0.00           2.07           
-Has conflicts                 No             No             
+Number of states              10             14             
+Build time (ms)               0.00           0.00           
+Has conflicts                 Yes            No             
 
 Conclusion:
-  Both parsers handle this grammar. SLR(1) uses fewer states.
+  SLR(1) has conflicts but LR(1) resolves them.
+  This grammar is LR(1) but NOT SLR(1).

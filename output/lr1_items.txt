@@ -1,206 +1,70 @@
 
 ========== LR(1) Canonical Collection ==========
-Total states: 22
+Total states: 14
 
 I0:
-  [ExprPrime -> • Expr , $]
-  [Expr -> • Expr + Term , $]
-  [Expr -> • Expr + Term , +]
-  [Expr -> • Term , $]
-  [Expr -> • Term , +]
-  [Term -> • Term * Factor , $]
-  [Term -> • Term * Factor , *]
-  [Term -> • Term * Factor , +]
-  [Term -> • Factor , $]
-  [Term -> • Factor , *]
-  [Term -> • Factor , +]
-  [Factor -> • ( Expr ) , $]
-  [Factor -> • ( Expr ) , *]
-  [Factor -> • ( Expr ) , +]
-  [Factor -> • id , $]
-  [Factor -> • id , *]
-  [Factor -> • id , +]
+  [StartPrime -> • Start , $]
+  [Start -> • Lval = Rval , $]
+  [Start -> • Rval , $]
+  [Lval -> • * Rval , $]
+  [Lval -> • * Rval , =]
+  [Lval -> • id , $]
+  [Lval -> • id , =]
+  [Rval -> • Lval , $]
 
 I1:
-  [Expr -> • Expr + Term , )]
-  [Expr -> • Expr + Term , +]
-  [Expr -> • Term , )]
-  [Expr -> • Term , +]
-  [Term -> • Term * Factor , )]
-  [Term -> • Term * Factor , *]
-  [Term -> • Term * Factor , +]
-  [Term -> • Factor , )]
-  [Term -> • Factor , *]
-  [Term -> • Factor , +]
-  [Factor -> • ( Expr ) , )]
-  [Factor -> • ( Expr ) , *]
-  [Factor -> • ( Expr ) , +]
-  [Factor -> ( • Expr ) , $]
-  [Factor -> ( • Expr ) , *]
-  [Factor -> ( • Expr ) , +]
-  [Factor -> • id , )]
-  [Factor -> • id , *]
-  [Factor -> • id , +]
+  [Lval -> • * Rval , $]
+  [Lval -> • * Rval , =]
+  [Lval -> * • Rval , $]
+  [Lval -> * • Rval , =]
+  [Lval -> • id , $]
+  [Lval -> • id , =]
+  [Rval -> • Lval , $]
+  [Rval -> • Lval , =]
 
 I2:
-  [ExprPrime -> Expr • , $]
-  [Expr -> Expr • + Term , $]
-  [Expr -> Expr • + Term , +]
+  [Start -> Lval • = Rval , $]
+  [Rval -> Lval • , $]
 
 I3:
-  [Term -> Factor • , $]
-  [Term -> Factor • , *]
-  [Term -> Factor • , +]
+  [Start -> Rval • , $]
 
 I4:
-  [Expr -> Term • , $]
-  [Expr -> Term • , +]
-  [Term -> Term • * Factor , $]
-  [Term -> Term • * Factor , *]
-  [Term -> Term • * Factor , +]
+  [StartPrime -> Start • , $]
 
 I5:
-  [Factor -> id • , $]
-  [Factor -> id • , *]
-  [Factor -> id • , +]
+  [Lval -> id • , $]
+  [Lval -> id • , =]
 
 I6:
-  [Expr -> • Expr + Term , )]
-  [Expr -> • Expr + Term , +]
-  [Expr -> • Term , )]
-  [Expr -> • Term , +]
-  [Term -> • Term * Factor , )]
-  [Term -> • Term * Factor , *]
-  [Term -> • Term * Factor , +]
-  [Term -> • Factor , )]
-  [Term -> • Factor , *]
-  [Term -> • Factor , +]
-  [Factor -> • ( Expr ) , )]
-  [Factor -> • ( Expr ) , *]
-  [Factor -> • ( Expr ) , +]
-  [Factor -> ( • Expr ) , )]
-  [Factor -> ( • Expr ) , *]
-  [Factor -> ( • Expr ) , +]
-  [Factor -> • id , )]
-  [Factor -> • id , *]
-  [Factor -> • id , +]
+  [Rval -> Lval • , $]
+  [Rval -> Lval • , =]
 
 I7:
-  [Expr -> Expr • + Term , )]
-  [Expr -> Expr • + Term , +]
-  [Factor -> ( Expr • ) , $]
-  [Factor -> ( Expr • ) , *]
-  [Factor -> ( Expr • ) , +]
+  [Lval -> * Rval • , $]
+  [Lval -> * Rval • , =]
 
 I8:
-  [Term -> Factor • , )]
-  [Term -> Factor • , *]
-  [Term -> Factor • , +]
+  [Start -> Lval = • Rval , $]
+  [Lval -> • * Rval , $]
+  [Lval -> • id , $]
+  [Rval -> • Lval , $]
 
 I9:
-  [Expr -> Term • , )]
-  [Expr -> Term • , +]
-  [Term -> Term • * Factor , )]
-  [Term -> Term • * Factor , *]
-  [Term -> Term • * Factor , +]
+  [Lval -> • * Rval , $]
+  [Lval -> * • Rval , $]
+  [Lval -> • id , $]
+  [Rval -> • Lval , $]
 
 I10:
-  [Factor -> id • , )]
-  [Factor -> id • , *]
-  [Factor -> id • , +]
+  [Rval -> Lval • , $]
 
 I11:
-  [Expr -> Expr + • Term , $]
-  [Expr -> Expr + • Term , +]
-  [Term -> • Term * Factor , $]
-  [Term -> • Term * Factor , *]
-  [Term -> • Term * Factor , +]
-  [Term -> • Factor , $]
-  [Term -> • Factor , *]
-  [Term -> • Factor , +]
-  [Factor -> • ( Expr ) , $]
-  [Factor -> • ( Expr ) , *]
-  [Factor -> • ( Expr ) , +]
-  [Factor -> • id , $]
-  [Factor -> • id , *]
-  [Factor -> • id , +]
+  [Start -> Lval = Rval • , $]
 
 I12:
-  [Term -> Term * • Factor , $]
-  [Term -> Term * • Factor , *]
-  [Term -> Term * • Factor , +]
-  [Factor -> • ( Expr ) , $]
-  [Factor -> • ( Expr ) , *]
-  [Factor -> • ( Expr ) , +]
-  [Factor -> • id , $]
-  [Factor -> • id , *]
-  [Factor -> • id , +]
+  [Lval -> id • , $]
 
 I13:
-  [Expr -> Expr • + Term , )]
-  [Expr -> Expr • + Term , +]
-  [Factor -> ( Expr • ) , )]
-  [Factor -> ( Expr • ) , *]
-  [Factor -> ( Expr • ) , +]
-
-I14:
-  [Factor -> ( Expr ) • , $]
-  [Factor -> ( Expr ) • , *]
-  [Factor -> ( Expr ) • , +]
-
-I15:
-  [Expr -> Expr + • Term , )]
-  [Expr -> Expr + • Term , +]
-  [Term -> • Term * Factor , )]
-  [Term -> • Term * Factor , *]
-  [Term -> • Term * Factor , +]
-  [Term -> • Factor , )]
-  [Term -> • Factor , *]
-  [Term -> • Factor , +]
-  [Factor -> • ( Expr ) , )]
-  [Factor -> • ( Expr ) , *]
-  [Factor -> • ( Expr ) , +]
-  [Factor -> • id , )]
-  [Factor -> • id , *]
-  [Factor -> • id , +]
-
-I16:
-  [Term -> Term * • Factor , )]
-  [Term -> Term * • Factor , *]
-  [Term -> Term * • Factor , +]
-  [Factor -> • ( Expr ) , )]
-  [Factor -> • ( Expr ) , *]
-  [Factor -> • ( Expr ) , +]
-  [Factor -> • id , )]
-  [Factor -> • id , *]
-  [Factor -> • id , +]
-
-I17:
-  [Expr -> Expr + Term • , $]
-  [Expr -> Expr + Term • , +]
-  [Term -> Term • * Factor , $]
-  [Term -> Term • * Factor , *]
-  [Term -> Term • * Factor , +]
-
-I18:
-  [Term -> Term * Factor • , $]
-  [Term -> Term * Factor • , *]
-  [Term -> Term * Factor • , +]
-
-I19:
-  [Factor -> ( Expr ) • , )]
-  [Factor -> ( Expr ) • , *]
-  [Factor -> ( Expr ) • , +]
-
-I20:
-  [Expr -> Expr + Term • , )]
-  [Expr -> Expr + Term • , +]
-  [Term -> Term • * Factor , )]
-  [Term -> Term • * Factor , *]
-  [Term -> Term • * Factor , +]
-
-I21:
-  [Term -> Term * Factor • , )]
-  [Term -> Term * Factor • , *]
-  [Term -> Term * Factor • , +]
+  [Lval -> * Rval • , $]
 

@@ -1,179 +1,48 @@
-Input: id + id * id 
+Input: id = id 
 
 ========== Parse Tree ==========
-└── Expr
-    ├── Expr
-    │   └── Term
-    │       └── Factor
+└── Start
+    ├── Lval
+    │   └── id
+    ├── =
+    └── Rval
+        └── Lval
+            └── id
+
+
+Input: * id = id 
+
+========== Parse Tree ==========
+└── Start
+    ├── Lval
+    │   ├── *
+    │   └── Rval
+    │       └── Lval
     │           └── id
-    ├── +
-    └── Term
-        ├── Term
-        │   └── Factor
-        │       └── id
-        ├── *
-        └── Factor
+    ├── =
+    └── Rval
+        └── Lval
             └── id
 
 
 Input: id 
 
 ========== Parse Tree ==========
-└── Expr
-    └── Term
-        └── Factor
+└── Start
+    └── Rval
+        └── Lval
             └── id
 
 
-Input: ( id + id ) 
+Input: * id 
 
 ========== Parse Tree ==========
-└── Expr
-    └── Term
-        └── Factor
-            ├── (
-            ├── Expr
-            │   ├── Expr
-            │   │   └── Term
-            │   │       └── Factor
-            │   │           └── id
-            │   ├── +
-            │   └── Term
-            │       └── Factor
-            │           └── id
-            └── )
-
-
-Input: id + id + id 
-
-========== Parse Tree ==========
-└── Expr
-    ├── Expr
-    │   ├── Expr
-    │   │   └── Term
-    │   │       └── Factor
-    │   │           └── id
-    │   ├── +
-    │   └── Term
-    │       └── Factor
-    │           └── id
-    ├── +
-    └── Term
-        └── Factor
-            └── id
-
-
-Input: ( id ) 
-
-========== Parse Tree ==========
-└── Expr
-    └── Term
-        └── Factor
-            ├── (
-            ├── Expr
-            │   └── Term
-            │       └── Factor
-            │           └── id
-            └── )
-
-
-Input: id * id 
-
-========== Parse Tree ==========
-└── Expr
-    └── Term
-        ├── Term
-        │   └── Factor
-        │       └── id
-        ├── *
-        └── Factor
-            └── id
-
-
-Input: ( id + id ) * id 
-
-========== Parse Tree ==========
-└── Expr
-    └── Term
-        ├── Term
-        │   └── Factor
-        │       ├── (
-        │       ├── Expr
-        │       │   ├── Expr
-        │       │   │   └── Term
-        │       │   │       └── Factor
-        │       │   │           └── id
-        │       │   ├── +
-        │       │   └── Term
-        │       │       └── Factor
-        │       │           └── id
-        │       └── )
-        ├── *
-        └── Factor
-            └── id
-
-
-Input: id + ( id * id ) 
-
-========== Parse Tree ==========
-└── Expr
-    ├── Expr
-    │   └── Term
-    │       └── Factor
-    │           └── id
-    ├── +
-    └── Term
-        └── Factor
-            ├── (
-            ├── Expr
-            │   └── Term
-            │       ├── Term
-            │       │   └── Factor
-            │       │       └── id
-            │       ├── *
-            │       └── Factor
-            │           └── id
-            └── )
-
-
-Input: ( ( id ) ) 
-
-========== Parse Tree ==========
-└── Expr
-    └── Term
-        └── Factor
-            ├── (
-            ├── Expr
-            │   └── Term
-            │       └── Factor
-            │           ├── (
-            │           ├── Expr
-            │           │   └── Term
-            │           │       └── Factor
-            │           │           └── id
-            │           └── )
-            └── )
-
-
-Input: id * id + id * id 
-
-========== Parse Tree ==========
-└── Expr
-    ├── Expr
-    │   └── Term
-    │       ├── Term
-    │       │   └── Factor
-    │       │       └── id
-    │       ├── *
-    │       └── Factor
-    │           └── id
-    ├── +
-    └── Term
-        ├── Term
-        │   └── Factor
-        │       └── id
-        ├── *
-        └── Factor
-            └── id
+└── Start
+    └── Rval
+        └── Lval
+            ├── *
+            └── Rval
+                └── Lval
+                    └── id
 
 

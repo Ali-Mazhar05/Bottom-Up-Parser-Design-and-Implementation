@@ -1,22 +1,24 @@
 
 ========== SLR(1) Parsing Table ==========
 
-=========================================================================================================================================
-  State |              (             )             *             +            id             $ |           Expr        Factor          Term
------------------------------------------------------------------------------------------------------------------------------------------
-     I0 |             s1                                                      s5               |              2             3             4
-     I1 |             s1                                                      s5               |              6             3             4
-     I2 |                                                       s7                         acc |                                           
-     I3 |               r(Term->Factor)r(Term->Factor)r(Term->Factor)              r(Term->Factor) |                                           
-     I4 |                r(Expr->Term)            s8 r(Expr->Term)               r(Expr->Term) |                                           
-     I5 |                r(Factor->id) r(Factor->id) r(Factor->id)               r(Factor->id) |                                           
-     I6 |                           s9                          s7                             |                                           
-     I7 |             s1                                                      s5               |                            3            10
-     I8 |             s1                                                      s5               |                           11              
-     I9 |               r(Factor->( Expr ))r(Factor->( Expr ))r(Factor->( Expr ))              r(Factor->( Expr )) |                                           
-    I10 |               r(Expr->Expr + Term)            s8r(Expr->Expr + Term)              r(Expr->Expr + Term) |                                           
-    I11 |               r(Term->Term * Factor)r(Term->Term * Factor)r(Term->Term * Factor)              r(Term->Term * Factor) |                                           
-=========================================================================================================================================
-No conflicts found. Grammar is valid.
+=============================================================================================================
+  State |              *             =            id             $ |           Lval          Rval         Start
+-------------------------------------------------------------------------------------------------------------
+     I0 |             s1                          s5               |              2             3             4
+     I1 |             s1                          s5               |              6             7              
+     I2 |                           s8               r(Rval->Lval) |                                           
+     I3 |                                           r(Start->Rval) |                                           
+     I4 |                                                      acc |                                           
+     I5 |                  r(Lval->id)                 r(Lval->id) |                                           
+     I6 |                r(Rval->Lval)               r(Rval->Lval) |                                           
+     I7 |               r(Lval->* Rval)              r(Lval->* Rval) |                                           
+     I8 |             s1                          s5               |              6             9              
+     I9 |                                           r(Start->Lval = Rval) |                                           
+=============================================================================================================
 
-[OK] Grammar is SLR(1).
+===== Conflicts Detected =====
+shift/reduce conflict at state I2 on symbol '=':
+  -> s8
+  -> r(Rval->Lval)
+
+[!] Grammar is NOT SLR(1) due to conflicts.

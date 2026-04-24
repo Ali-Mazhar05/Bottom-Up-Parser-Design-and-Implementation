@@ -1,22 +1,35 @@
-Input: id + id * id 
+Input: id = id 
 
 ========== LR(1) Parsing Trace ==========
 Step Stack                         Input                         Action                             
 ----------------------------------------------------------------------------------------------------
-1    0                             id + id * id $                Shift 5
-2    0 id 5                        + id * id $                   Reduce Factor -> id 
-3    0 Factor 3                    + id * id $                   Reduce Term -> Factor 
-4    0 Term 4                      + id * id $                   Reduce Expr -> Term 
-5    0 Expr 2                      + id * id $                   Shift 11
-6    0 Expr 2 + 11                 id * id $                     Shift 5
-7    0 Expr 2 + 11 id 5            * id $                        Reduce Factor -> id 
-8    0 Expr 2 + 11 Factor 3        * id $                        Reduce Term -> Factor 
-9    0 Expr 2 + 11 Term 17         * id $                        Shift 12
-10   0 Expr 2 + 11 Term 17 * 12    id $                          Shift 5
-11   0 Expr 2 + 11 Term 17 * 12 id 5$                             Reduce Factor -> id 
-12   0 Expr 2 + 11 Term 17 * 12 Factor 18$                             Reduce Term -> Term * Factor 
-13   0 Expr 2 + 11 Term 17         $                             Reduce Expr -> Expr + Term 
-14   0 Expr 2                      $                             Accept
+1    0                             id = id $                     Shift 5
+2    0 id 5                        = id $                        Reduce Lval -> id 
+3    0 Lval 2                      = id $                        Shift 8
+4    0 Lval 2 = 8                  id $                          Shift 12
+5    0 Lval 2 = 8 id 12            $                             Reduce Lval -> id 
+6    0 Lval 2 = 8 Lval 10          $                             Reduce Rval -> Lval 
+7    0 Lval 2 = 8 Rval 11          $                             Reduce Start -> Lval = Rval 
+8    0 Start 4                     $                             Accept
+
+Result: String accepted successfully!
+
+Input: * id = id 
+
+========== LR(1) Parsing Trace ==========
+Step Stack                         Input                         Action                             
+----------------------------------------------------------------------------------------------------
+1    0                             * id = id $                   Shift 1
+2    0 * 1                         id = id $                     Shift 5
+3    0 * 1 id 5                    = id $                        Reduce Lval -> id 
+4    0 * 1 Lval 6                  = id $                        Reduce Rval -> Lval 
+5    0 * 1 Rval 7                  = id $                        Reduce Lval -> * Rval 
+6    0 Lval 2                      = id $                        Shift 8
+7    0 Lval 2 = 8                  id $                          Shift 12
+8    0 Lval 2 = 8 id 12            $                             Reduce Lval -> id 
+9    0 Lval 2 = 8 Lval 10          $                             Reduce Rval -> Lval 
+10   0 Lval 2 = 8 Rval 11          $                             Reduce Start -> Lval = Rval 
+11   0 Start 4                     $                             Accept
 
 Result: String accepted successfully!
 
@@ -26,194 +39,39 @@ Input: id
 Step Stack                         Input                         Action                             
 ----------------------------------------------------------------------------------------------------
 1    0                             id $                          Shift 5
-2    0 id 5                        $                             Reduce Factor -> id 
-3    0 Factor 3                    $                             Reduce Term -> Factor 
-4    0 Term 4                      $                             Reduce Expr -> Term 
-5    0 Expr 2                      $                             Accept
+2    0 id 5                        $                             Reduce Lval -> id 
+3    0 Lval 2                      $                             Reduce Rval -> Lval 
+4    0 Rval 3                      $                             Reduce Start -> Rval 
+5    0 Start 4                     $                             Accept
 
 Result: String accepted successfully!
 
-Input: ( id + id ) 
+Input: * id 
 
 ========== LR(1) Parsing Trace ==========
 Step Stack                         Input                         Action                             
 ----------------------------------------------------------------------------------------------------
-1    0                             ( id + id ) $                 Shift 1
-2    0 ( 1                         id + id ) $                   Shift 10
-3    0 ( 1 id 10                   + id ) $                      Reduce Factor -> id 
-4    0 ( 1 Factor 8                + id ) $                      Reduce Term -> Factor 
-5    0 ( 1 Term 9                  + id ) $                      Reduce Expr -> Term 
-6    0 ( 1 Expr 7                  + id ) $                      Shift 15
-7    0 ( 1 Expr 7 + 15             id ) $                        Shift 10
-8    0 ( 1 Expr 7 + 15 id 10       ) $                           Reduce Factor -> id 
-9    0 ( 1 Expr 7 + 15 Factor 8    ) $                           Reduce Term -> Factor 
-10   0 ( 1 Expr 7 + 15 Term 20     ) $                           Reduce Expr -> Expr + Term 
-11   0 ( 1 Expr 7                  ) $                           Shift 14
-12   0 ( 1 Expr 7 ) 14             $                             Reduce Factor -> ( Expr ) 
-13   0 Factor 3                    $                             Reduce Term -> Factor 
-14   0 Term 4                      $                             Reduce Expr -> Term 
-15   0 Expr 2                      $                             Accept
+1    0                             * id $                        Shift 1
+2    0 * 1                         id $                          Shift 5
+3    0 * 1 id 5                    $                             Reduce Lval -> id 
+4    0 * 1 Lval 6                  $                             Reduce Rval -> Lval 
+5    0 * 1 Rval 7                  $                             Reduce Lval -> * Rval 
+6    0 Lval 2                      $                             Reduce Rval -> Lval 
+7    0 Rval 3                      $                             Reduce Start -> Rval 
+8    0 Start 4                     $                             Accept
 
 Result: String accepted successfully!
 
-Input: id + id + id 
+Input: id = 
 
 ========== LR(1) Parsing Trace ==========
 Step Stack                         Input                         Action                             
 ----------------------------------------------------------------------------------------------------
-1    0                             id + id + id $                Shift 5
-2    0 id 5                        + id + id $                   Reduce Factor -> id 
-3    0 Factor 3                    + id + id $                   Reduce Term -> Factor 
-4    0 Term 4                      + id + id $                   Reduce Expr -> Term 
-5    0 Expr 2                      + id + id $                   Shift 11
-6    0 Expr 2 + 11                 id + id $                     Shift 5
-7    0 Expr 2 + 11 id 5            + id $                        Reduce Factor -> id 
-8    0 Expr 2 + 11 Factor 3        + id $                        Reduce Term -> Factor 
-9    0 Expr 2 + 11 Term 17         + id $                        Reduce Expr -> Expr + Term 
-10   0 Expr 2                      + id $                        Shift 11
-11   0 Expr 2 + 11                 id $                          Shift 5
-12   0 Expr 2 + 11 id 5            $                             Reduce Factor -> id 
-13   0 Expr 2 + 11 Factor 3        $                             Reduce Term -> Factor 
-14   0 Expr 2 + 11 Term 17         $                             Reduce Expr -> Expr + Term 
-15   0 Expr 2                      $                             Accept
+1    0                             id = $                        Shift 5
+2    0 id 5                        = $                           Reduce Lval -> id 
+3    0 Lval 2                      = $                           Shift 8
+4    0 Lval 2 = 8                  $                             Error
 
-Result: String accepted successfully!
-
-Input: ( id ) 
-
-========== LR(1) Parsing Trace ==========
-Step Stack                         Input                         Action                             
-----------------------------------------------------------------------------------------------------
-1    0                             ( id ) $                      Shift 1
-2    0 ( 1                         id ) $                        Shift 10
-3    0 ( 1 id 10                   ) $                           Reduce Factor -> id 
-4    0 ( 1 Factor 8                ) $                           Reduce Term -> Factor 
-5    0 ( 1 Term 9                  ) $                           Reduce Expr -> Term 
-6    0 ( 1 Expr 7                  ) $                           Shift 14
-7    0 ( 1 Expr 7 ) 14             $                             Reduce Factor -> ( Expr ) 
-8    0 Factor 3                    $                             Reduce Term -> Factor 
-9    0 Term 4                      $                             Reduce Expr -> Term 
-10   0 Expr 2                      $                             Accept
-
-Result: String accepted successfully!
-
-Input: id * id 
-
-========== LR(1) Parsing Trace ==========
-Step Stack                         Input                         Action                             
-----------------------------------------------------------------------------------------------------
-1    0                             id * id $                     Shift 5
-2    0 id 5                        * id $                        Reduce Factor -> id 
-3    0 Factor 3                    * id $                        Reduce Term -> Factor 
-4    0 Term 4                      * id $                        Shift 12
-5    0 Term 4 * 12                 id $                          Shift 5
-6    0 Term 4 * 12 id 5            $                             Reduce Factor -> id 
-7    0 Term 4 * 12 Factor 18       $                             Reduce Term -> Term * Factor 
-8    0 Term 4                      $                             Reduce Expr -> Term 
-9    0 Expr 2                      $                             Accept
-
-Result: String accepted successfully!
-
-Input: ( id + id ) * id 
-
-========== LR(1) Parsing Trace ==========
-Step Stack                         Input                         Action                             
-----------------------------------------------------------------------------------------------------
-1    0                             ( id + id ) * id $            Shift 1
-2    0 ( 1                         id + id ) * id $              Shift 10
-3    0 ( 1 id 10                   + id ) * id $                 Reduce Factor -> id 
-4    0 ( 1 Factor 8                + id ) * id $                 Reduce Term -> Factor 
-5    0 ( 1 Term 9                  + id ) * id $                 Reduce Expr -> Term 
-6    0 ( 1 Expr 7                  + id ) * id $                 Shift 15
-7    0 ( 1 Expr 7 + 15             id ) * id $                   Shift 10
-8    0 ( 1 Expr 7 + 15 id 10       ) * id $                      Reduce Factor -> id 
-9    0 ( 1 Expr 7 + 15 Factor 8    ) * id $                      Reduce Term -> Factor 
-10   0 ( 1 Expr 7 + 15 Term 20     ) * id $                      Reduce Expr -> Expr + Term 
-11   0 ( 1 Expr 7                  ) * id $                      Shift 14
-12   0 ( 1 Expr 7 ) 14             * id $                        Reduce Factor -> ( Expr ) 
-13   0 Factor 3                    * id $                        Reduce Term -> Factor 
-14   0 Term 4                      * id $                        Shift 12
-15   0 Term 4 * 12                 id $                          Shift 5
-16   0 Term 4 * 12 id 5            $                             Reduce Factor -> id 
-17   0 Term 4 * 12 Factor 18       $                             Reduce Term -> Term * Factor 
-18   0 Term 4                      $                             Reduce Expr -> Term 
-19   0 Expr 2                      $                             Accept
-
-Result: String accepted successfully!
-
-Input: id + ( id * id ) 
-
-========== LR(1) Parsing Trace ==========
-Step Stack                         Input                         Action                             
-----------------------------------------------------------------------------------------------------
-1    0                             id + ( id * id ) $            Shift 5
-2    0 id 5                        + ( id * id ) $               Reduce Factor -> id 
-3    0 Factor 3                    + ( id * id ) $               Reduce Term -> Factor 
-4    0 Term 4                      + ( id * id ) $               Reduce Expr -> Term 
-5    0 Expr 2                      + ( id * id ) $               Shift 11
-6    0 Expr 2 + 11                 ( id * id ) $                 Shift 1
-7    0 Expr 2 + 11 ( 1             id * id ) $                   Shift 10
-8    0 Expr 2 + 11 ( 1 id 10       * id ) $                      Reduce Factor -> id 
-9    0 Expr 2 + 11 ( 1 Factor 8    * id ) $                      Reduce Term -> Factor 
-10   0 Expr 2 + 11 ( 1 Term 9      * id ) $                      Shift 16
-11   0 Expr 2 + 11 ( 1 Term 9 * 16 id ) $                        Shift 10
-12   0 Expr 2 + 11 ( 1 Term 9 * 16 id 10) $                           Reduce Factor -> id 
-13   0 Expr 2 + 11 ( 1 Term 9 * 16 Factor 21) $                           Reduce Term -> Term * Factor 
-14   0 Expr 2 + 11 ( 1 Term 9      ) $                           Reduce Expr -> Term 
-15   0 Expr 2 + 11 ( 1 Expr 7      ) $                           Shift 14
-16   0 Expr 2 + 11 ( 1 Expr 7 ) 14 $                             Reduce Factor -> ( Expr ) 
-17   0 Expr 2 + 11 Factor 3        $                             Reduce Term -> Factor 
-18   0 Expr 2 + 11 Term 17         $                             Reduce Expr -> Expr + Term 
-19   0 Expr 2                      $                             Accept
-
-Result: String accepted successfully!
-
-Input: ( ( id ) ) 
-
-========== LR(1) Parsing Trace ==========
-Step Stack                         Input                         Action                             
-----------------------------------------------------------------------------------------------------
-1    0                             ( ( id ) ) $                  Shift 1
-2    0 ( 1                         ( id ) ) $                    Shift 6
-3    0 ( 1 ( 6                     id ) ) $                      Shift 10
-4    0 ( 1 ( 6 id 10               ) ) $                         Reduce Factor -> id 
-5    0 ( 1 ( 6 Factor 8            ) ) $                         Reduce Term -> Factor 
-6    0 ( 1 ( 6 Term 9              ) ) $                         Reduce Expr -> Term 
-7    0 ( 1 ( 6 Expr 13             ) ) $                         Shift 19
-8    0 ( 1 ( 6 Expr 13 ) 19        ) $                           Reduce Factor -> ( Expr ) 
-9    0 ( 1 Factor 8                ) $                           Reduce Term -> Factor 
-10   0 ( 1 Term 9                  ) $                           Reduce Expr -> Term 
-11   0 ( 1 Expr 7                  ) $                           Shift 14
-12   0 ( 1 Expr 7 ) 14             $                             Reduce Factor -> ( Expr ) 
-13   0 Factor 3                    $                             Reduce Term -> Factor 
-14   0 Term 4                      $                             Reduce Expr -> Term 
-15   0 Expr 2                      $                             Accept
-
-Result: String accepted successfully!
-
-Input: id * id + id * id 
-
-========== LR(1) Parsing Trace ==========
-Step Stack                         Input                         Action                             
-----------------------------------------------------------------------------------------------------
-1    0                             id * id + id * id $           Shift 5
-2    0 id 5                        * id + id * id $              Reduce Factor -> id 
-3    0 Factor 3                    * id + id * id $              Reduce Term -> Factor 
-4    0 Term 4                      * id + id * id $              Shift 12
-5    0 Term 4 * 12                 id + id * id $                Shift 5
-6    0 Term 4 * 12 id 5            + id * id $                   Reduce Factor -> id 
-7    0 Term 4 * 12 Factor 18       + id * id $                   Reduce Term -> Term * Factor 
-8    0 Term 4                      + id * id $                   Reduce Expr -> Term 
-9    0 Expr 2                      + id * id $                   Shift 11
-10   0 Expr 2 + 11                 id * id $                     Shift 5
-11   0 Expr 2 + 11 id 5            * id $                        Reduce Factor -> id 
-12   0 Expr 2 + 11 Factor 3        * id $                        Reduce Term -> Factor 
-13   0 Expr 2 + 11 Term 17         * id $                        Shift 12
-14   0 Expr 2 + 11 Term 17 * 12    id $                          Shift 5
-15   0 Expr 2 + 11 Term 17 * 12 id 5$                             Reduce Factor -> id 
-16   0 Expr 2 + 11 Term 17 * 12 Factor 18$                             Reduce Term -> Term * Factor 
-17   0 Expr 2 + 11 Term 17         $                             Reduce Expr -> Expr + Term 
-18   0 Expr 2                      $                             Accept
-
-Result: String accepted successfully!
+Result: String REJECTED. Unexpected symbol '$' in state I8.
+Expected one of: *, id
 
